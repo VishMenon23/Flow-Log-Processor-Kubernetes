@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flow Log Processor</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Flow Log Processor</h1>
+
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <div class="alert alert-warning">
+            {% for message in messages %}
+            <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+
+        <div class="card p-4">
+            <form action="/" method="post" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="lookup_file" class="form-label">Lookup Table (CSV/TXT):</label>
+                    <input type="file" class="form-control" name="lookup_file" id="lookup_file">
+                    <select class="form-select mt-2" name="lookup_file_select" id="lookup_file_select">
+                        <option value="">Select a file from uploads...</option>
+                        {% for file in lookup_files %}
+                        <option value="{{ file }}">{{ file }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="flow_log_file" class="form-label">Flow Log File (TXT):</label>
+                    <input type="file" class="form-control" name="flow_log_file" id="flow_log_file">
+                    <select class="form-select mt-2" name="flow_log_file_select" id="flow_log_file_select">
+                        <option value="">Select a file from uploads...</option>
+                        {% for file in flow_log_files %}
+                        <option value="{{ file }}">{{ file }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Process Files</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
