@@ -89,22 +89,34 @@ FLOW-LOG-PROCESSOR/
 - Kubectl
 
 #### Build the Docker Image
-- docker build --no-cache -t flowlog-kubernetes .
+```
+docker build --no-cache -t flowlog-kubernetes .
+```
 
 #### Build the Docker Image
-- Start Minikube
+```
+Start Minikube
+```
 
 #### Load the Docker Image into Minikube
-- minikube image load flowlog-kubernetes
+```
+minikube image load flowlog-kubernetes
+```
 
 #### Deploy the Kubernetes Resources
-- kubectl apply -f deployment.yaml
+```
+kubectl apply -f deployment.yaml
+```
 
 #### Deploy the Kubernetes Resources
-- kubectl apply -f deployment.yaml
+```
+kubectl apply -f deployment.yaml
+```
 
 #### Access the Flask Application
-- minikube service flowlog-test-service
+```
+minikube service flowlog-test-service
+```
 
 ### Tests and Validation
 
